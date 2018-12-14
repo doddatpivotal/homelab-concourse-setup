@@ -1,0 +1,14 @@
+vcenter_rp: concourse
+director_name: bosh-concourse
+internal_cidr: 192.168.7.0/24
+internal_gw: 192.168.7.1
+internal_ip: 192.168.7.180
+network_name: "VM Network"
+vcenter_dc: Datacenter
+vcenter_ds: datastore1
+vcenter_ip: 192.168.7.105
+vcenter_user: administrator@vsphere.local
+vcenter_templates: pcf_templates
+vcenter_vms: pcf_vms
+vcenter_disks: pcf_disks
+vcenter_cluster: Cluster1

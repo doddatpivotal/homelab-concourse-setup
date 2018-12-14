@@ -1,0 +1,13 @@
+---
+db_vm_type: 'concourse-db'   # the VM type for Postgres DB
+db_persistent_disk_type: 'concourse-db'  # the disk type for persistence
+web_vm_type: 'concourse-web'  # the VM type for Concourse web VM
+worker_vm_type: 'concourse-workers'  # the VM type for worker VMs
+db_ip: '192.168.7.182'  # the IP address reserved for the Postgres DB
+web_ip: '192.168.7.181'  # the IP address of Concourse web VM
+az_1_name: az1
+deployment_name: concourse
+network_name: concourse
+external_host: ci.lab.winterfell.live
+external_url: https://ci.lab.winterfell.live
+main_team_oauth_users: ["concourse"]

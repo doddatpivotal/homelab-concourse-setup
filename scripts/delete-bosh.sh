@@ -1,7 +1,9 @@
-# Usage: ./scripts/create-bosh.sh [vcenter-password]
-# Example: ./scripts/create-bosh.sh PASSWORD
+# Usage: ./scripts/delete-bosh.sh [vcenter_password]
+# Example: ./scripts/delete-bosh.sh $VCENTER_PASSWORD
 
-bosh create-env local-cache/bosh-deployment/bosh.yml \
+source scripts/bosh-env.sh
+
+bosh delete-env local-cache/bosh-deployment/bosh.yml \
     --state=generated/bosh/state.json \
     --vars-store=generated/bosh/creds.yml \
     -o local-cache/bosh-deployment/vsphere/cpi.yml \

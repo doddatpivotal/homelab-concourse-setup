@@ -5,6 +5,10 @@ The process should take about 30 minutes
 
 ## Setup
 
+Get the supported credhub version from [Concourse for PCF docs](https://docs.pivotal.io/p-concourse/4-x/index.html#compatibility)
+
+>NOTE: Update the tag version in ./scripts/clone-source-git-repos.sh
+
 ```bash
 ./scripts/clone-source-git-repos.sh
 ```
@@ -23,7 +27,7 @@ You will need to update the variables passed in below with the ones provided by 
 
 >Example ./scripts/create-bosh.sh foopassword
 
-1. Setup alias and update the cloud config
+1. Setup alias and update the bosh/cloud-config.yml file
 
 ```bash
 ./scripts/configure-bosh.sh
@@ -35,19 +39,19 @@ Now you are ready for the concourse installation.
 
 1. Use Pivnet to retrieve stemcells and then upload into bosh
 
-Log into Pivnet
-Download 97 stemcell **may have to update release version and identifier**
 >See [Concourse Compatibility](https://docs.pivotal.io/p-concourse/index.html#compatibility) for supported stemcells
 
-Your token may be found at ~/.pivnetrc
+Identify the stemcell version and slug
 
-Get the supported XENIAL_VERSION from [Concourse for PCF docs](https://docs.pivotal.io/p-concourse/4-x/index.html#compatibility)
+Download stemcell (this is to ensure you have accepted the eula)
+
+Your token may be found at ~/.pivnetrc
 
 ```bash
 ./scripts/retrieve-and-upload-stemcell.sh $PIVNET_API_TOKEN $XENIAL_VERSION $XENIAL_SLUG
 ```
 
->Example `./scripts/retrieve-and-upload-stemcell.sh $PIVNET_API_TOKEN 97.41 276961`
+>Example `./scripts/retrieve-and-upload-stemcell.sh $PIVNET_API_TOKEN 250.29 352509`
 
 1. Deploy Concourse
 
@@ -74,7 +78,7 @@ bosh -e bosh-1 deploy -d concourse ./concourse-bosh-deployment/cluster/concourse
   --var local_user.username=admin \
   --var local_user.password=REDACTED_PASSWORD \
   --var web_ip=192.168.72.181 \
-  --var az=az1 \
+  --var az=z1 \
   --var external_url=http://ci.lab.winterfell.live \
   --var network_name=concourse \
   --var web_vm_type=small \
@@ -121,10 +125,11 @@ fly -t lab trigger-job -j hello-credhub/hello-credhub -w
 
 ```
 
-1. Access concourse
+>If you see "Hello World" at the end then you passed your test!
 
-**you will need to be on vpn**
-You can visit concourse at http://ci.lab.winterfell.live and use the following to setup local fly target
-```
-fly --target lab login --concourse-url http://ci.lab.winterfell.live
+## Teardown
+
+```bash
+./scripts/delete-concourse.sh
+./scripts/delete-bosh.sh $ACCESS_KEY_ID $SECRET_ACCESS_KEY
 ```

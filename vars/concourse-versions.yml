@@ -1,18 +1,5 @@
-# this file is partially maintained by CI; the concourse and garden-runc
-# versions and sha1s are automatically bumped, while the rest are preserved
-# as-is.
-#
-# this should make getting started easy while being easy enough to maintain
-# manually. feel free to PR sane defaults along with newly supported
-# infrastructures and such!
 ---
-concourse_version: '4.2.1'
-concourse_sha1: 'e4036597aa010806051ebb6596e4fdc2fc14f936'
-garden_runc_version: '1.16.3'
-garden_runc_sha1: '2a7c813e7e4d862e19334addf022916fb6b91eb0'
-postgres_version: '30'
-postgres_sha1: 'a798999d29b9f5aa12035cff907b26674b491200'
 credhub_version: '1.9.5'
 credhub_sha1: '2390e855f092b0fb9c58f9cb88853ea938e87a3e'
-uaa_version: '67.0'
-uaa_sha1: 'b07e17aff8caaf36d7c8263f5b0cd2cf64f1ad1f'
+uaa_version: '72.0'
+uaa_sha1: '7130e5ac640ed1e1f52c09e76995e4d0680f3b45'

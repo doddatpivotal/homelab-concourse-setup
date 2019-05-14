@@ -13,6 +13,7 @@ bosh -e bosh-concourse -d concourse -n \
   -o local-cache/concourse-bosh-deployment/cluster/operations/privileged-https.yml \
   -o local-cache/concourse-bosh-deployment/cluster/operations/uaa-generic-oauth-provider.yml \
   -o concourse/operations/static-db-additions.yml \
+  -o concourse/operations/pre-uploaded-releases.yml \
   -l vars/concourse-params.yml \
   -l local-cache/concourse-bosh-deployment/versions.yml \
   -l vars/concourse-versions.yml \

@@ -4,6 +4,7 @@ internal_cidr: 192.168.7.0/24
 internal_gw: 192.168.7.1
 internal_ip: 192.168.7.180
 internal_dns: 192.168.7.1
+internal_ntp: time.nist.gov
 network_name: "VM Network"
 vcenter_dc: Datacenter
 vcenter_ds: datastore1

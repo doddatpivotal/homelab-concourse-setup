@@ -19,6 +19,13 @@ Add operation for custom dns server
 - updated `/scripts/create-bosh.sh` to call new operations file
 - updated `/scripts/delete-bosh.sh` to call new operations file
 
+Add operation for custom ntp server
+
+- updated `/vars/bosh-director-params.yml` to specify custom ntp server ip
+- created `/bosh/operations/custom-ntp.server.yml` set dns value to a passed in variable
+- updated `/scripts/create-bosh.sh` to call new operations file
+- updated `/scripts/delete-bosh.sh` to call new operations file
+
 ## Concourse Modifications
 
 Created script to retrieve and upload concourse releases

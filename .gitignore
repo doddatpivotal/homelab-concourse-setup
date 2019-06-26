@@ -1,3 +1,4 @@
 generated/
 local-cache/
 .DS_Store
+seed-credhub.sh

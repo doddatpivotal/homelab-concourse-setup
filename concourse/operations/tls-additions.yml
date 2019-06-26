@@ -1,4 +1,5 @@
 - type: replace
   path: /variables/name=atc_tls/options/common_name?
   value: ((external_host))
-
+- type: remove
+  path: /variables/name=atc_tls/options/organization

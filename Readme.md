@@ -66,28 +66,6 @@ Helpful guides:
 - [For use of oauth and uuaa](https://github.com/concourse/concourse-bosh-deployment/pull/85)
 - [For credhub and concourse integration](https://github.com/pivotal-cf/pcf-pipelines/blob/master/docs/credhub-integration.md)
 
-For a non-uaa/credhub solution...
-
-```bash
-bosh -e bosh-1 deploy -d concourse ./concourse-bosh-deployment/cluster/concourse.yml \
-  -l ./concourse-bosh-deployment/versions.yml \
-  --vars-store ./concourse-bosh-deployment/cluster/cluster-creds.yml \
-  -o ./concourse-bosh-deployment/cluster/operations/static-web.yml \
-  -o ./concourse-bosh-deployment/cluster/operations/basic-auth.yml \
-  -o ./concourse-bosh-deployment/cluster/operations/privileged-http.yml \
-  --var local_user.username=admin \
-  --var local_user.password=REDACTED_PASSWORD \
-  --var web_ip=192.168.72.181 \
-  --var az=z1 \
-  --var external_url=http://ci.lab.winterfell.live \
-  --var network_name=concourse \
-  --var web_vm_type=small \
-  --var db_vm_type=small \
-  --var db_persistent_disk_type=10240 \
-  --var worker_vm_type=medium.disk \
-  --var deployment_name=concourse
-```
-
 For a uaa/credhub solution...
 
 ```bash
@@ -106,6 +84,9 @@ For a uaa/credhub solution...
 
 ```bash
 fly login -t lab -c https://ci.lab.winterfell.live -k
+
+# Go to the url presented in the login prompt and authenticate with the newly created user
+# using fly and chome on seperate computers, go to /sky/token and copy the content of the page and then enter into the fly prompt for token
 
 fly -t lab set-team -n team-uaa-oauth --oauth-user concourse --non-interactive
 
@@ -126,6 +107,10 @@ fly -t lab trigger-job -j hello-credhub/hello-credhub -w
 ```
 
 >If you see "Hello World" at the end then you passed your test!
+
+## Populate Credhub with Secrets
+
+./scripts/seed-credhub.redacted.sh can be renamed to seed-credhub.sh (which is listed in .gitignore).  With that, you can replace redacted secrets with those that you want to put in credhub.  This will be necessary for the platform automation activity
 
 ## Teardown
 

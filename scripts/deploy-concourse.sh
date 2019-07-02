@@ -1,5 +1,7 @@
 source scripts/bosh-env.sh
 
+rm generated/concourse/concourse-gen-vars.yml
+
 bosh -e bosh-concourse -d concourse -n \
   deploy local-cache/concourse-bosh-deployment/cluster/concourse.yml \
   -o local-cache/concourse-bosh-deployment/cluster/operations/add-main-team-oauth-users.yml \

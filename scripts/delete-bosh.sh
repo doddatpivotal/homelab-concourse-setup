@@ -11,3 +11,4 @@ bosh delete-env local-cache/bosh-deployment/bosh.yml \
     -v vcenter_password=$1 \
     -l vars/bosh-director-params.yml
 
+rm generated/bosh/creds.yml

@@ -5,7 +5,7 @@ vm_types:
 - name: default
   cloud_properties:
     cpu: 2
-    disk: 4096
+    disk: 10240
     ram: 2048
 - name: concourse-web
   cloud_properties:
@@ -16,7 +16,7 @@ vm_types:
 - name: concourse-db
   cloud_properties:
     cpu: 4
-    disk: 10000
+    disk: 10240
     nested_hardware_virtualization: true
     ram: 8192
 - name: concourse-workers
@@ -28,10 +28,10 @@ vm_types:
 
 disk_types:
 - name: default
-  disk_size: 3000
+  disk_size: 10240
   cloud_properties: { type: thin }
 - name: provisioner
-  disk_size: 10000
+  disk_size: 10240
   cloud_properties: { type: thin }
 - name: concourse-db
   disk_size: 200000

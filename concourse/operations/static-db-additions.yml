@@ -1,18 +1,9 @@
 - type: replace
-  path: /instance_groups/name=web/jobs/name=atc/properties/log_level?
+  path: /instance_groups/name=web/jobs/name=web/properties/log_level?
   value: debug
 
 - type: replace
-  path: /instance_groups/name=web/jobs/name=tsa/properties/log_level?
-  value: debug
-
-- type: replace
-  path: /instance_groups/name=worker/jobs/name=baggageclaim/properties?
-  value:
-    log_level: debug
-
-- type: replace
-  path: /instance_groups/name=web/jobs/name=atc/properties/postgresql/host?
+  path: /instance_groups/name=web/jobs/name=web/properties/postgresql/host?
   value: ((db_ip))
 
 - type: replace

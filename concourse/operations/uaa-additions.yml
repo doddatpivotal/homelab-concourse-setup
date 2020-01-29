@@ -1,3 +1,6 @@
 - type: replace
   path: /instance_groups/name=web/jobs/name=uaa/properties/uaadb/address?
   value: ((db_ip))
+- type: replace
+  path: /instance_groups/name=web/jobs/name=uaa/properties/uaadb/tls?
+  value: disabled

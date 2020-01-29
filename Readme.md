@@ -92,9 +92,9 @@ fly -t lab set-team -n team-uaa-oauth --oauth-user concourse --non-interactive
 
 credhub api https://ci.lab.winterfell.live:8844 --ca-cert <(bosh int generated/concourse/concourse-gen-vars.yml --path /atc_tls/ca)
 
-export CREDHUB_PASSWORD=$(bosh int generated/concourse/concourse-gen-vars.yml --path /uaa_users_admin)
+export CREDHUB_SECRET=$(bosh int generated/concourse/concourse-gen-vars.yml --path /credhub_admin_secret)
 
-credhub login -u admin -p "$CREDHUB_PASSWORD"
+credhub login --client-name credhub_admin
 
 credhub set --type value --name '/concourse/main/hello' --value 'World'
 
@@ -117,4 +117,15 @@ fly -t lab trigger-job -j hello-credhub/hello-credhub -w
 ```bash
 ./scripts/delete-concourse.sh
 ./scripts/delete-bosh.sh $ACCESS_KEY_ID $SECRET_ACCESS_KEY
+```
+
+## Upgrade from 4.2 to 5.x
+
+Folling from [docs](https://docs.pivotal.io/p-concourse/v5/upgrade-from-4/backups/)
+
+```bash
+bosh \
+upload-release \
+--sha1 364838c384f2edec80866b4abf2397c4c5d15c62 \
+https://bosh.io/d/github.com/cloudfoundry-incubator/backup-and-restore-sdk-release?v=1.15.1
 ```

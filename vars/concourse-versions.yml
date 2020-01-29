@@ -1,5 +1,5 @@
 ---
-credhub_version: '1.9.5'
-credhub_sha1: '2390e855f092b0fb9c58f9cb88853ea938e87a3e'
-uaa_version: '72.0'
-uaa_sha1: '7130e5ac640ed1e1f52c09e76995e4d0680f3b45'
+credhub_version: '2.5.9'
+credhub_sha1: '225d508eed11c3f6f4a360118de068d5db9fa427'
+uaa_version: '74.11.0'
+uaa_sha1: '7887fd2f849389d5ee192b5ac6e0f5a5b9807ca6'

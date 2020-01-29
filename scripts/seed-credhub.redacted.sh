@@ -1,7 +1,7 @@
 
 credhub api https://ci.lab.winterfell.live:8844 --ca-cert <(bosh int generated/concourse/concourse-gen-vars.yml --path /atc_tls/ca)
-export CREDHUB_PASSWORD=$(bosh int generated/concourse/concourse-gen-vars.yml --path /uaa_users_admin)
-credhub login -u admin -p "$CREDHUB_PASSWORD"
+export CREDHUB_SECRET=$(bosh int generated/concourse/concourse-gen-vars.yml --path /credhub_admin_secret)
+credhub login --client-name credhub_admin
 
 # Concourse main team credentials
 credhub set -t value -n '/concourse/main/s3_access_key_id' -v 'REDACTED_ACCESS_KEY_D'
@@ -12,7 +12,7 @@ credhub set -t rsa -n '/concourse/main/platform_automation_example_git_repo' -p 
 credhub set -t rsa -n '/concourse/main/platform_automation_example_locks_git_repo' -p configuration_private_key3.cert
 credhub set -t certificate -n '/concourse/main/credhub_ca_cert' -c <(bosh int ../homelab-concourse-setup/generated/concourse/concourse-gen-vars.yml --path /atc_tls/ca)
 credhub set -t value -n '/concourse/main/credhub_secret' -v $(bosh int ../homelab-concourse-setup/generated/concourse/concourse-gen-vars.yml --path /uaa_users_admin)
-credhub set -t value -n '/concourse/main/concourse_to_credhub_secret' -v $(bosh int ../homelab-concourse-setup/generated/concourse/concourse-gen-vars.yml --path /concourse_to_credhub_secret)
+credhub set -t value -n '/concourse/main/concourse_to_credhub_client_secret' -v $(bosh int ../homelab-concourse-setup/generated/concourse/concourse-gen-vars.yml --path /concourse_to_credhub_client_secret)
 credhub set -t value -n '/concourse/main/general_password' -v 'REDACTED'
 credhub set -t value -n '/concourse/main/cf_mgmt_client_secret' -v 'REDACTED'
 credhub set -t value -n '/concourse/main/ldap_bind_user_password' -v 'REDACTED'
@@ -29,3 +29,4 @@ credhub set -t value -n '/lab-foundation/pivnet_token' -v 'REDACTED'
 credhub set -t value -n '/lab-foundation/opsman_username' -v 'REDACTED'
 credhub set -t value -n '/lab-foundation/opsman_password' -v 'REDACTED'
 credhub set -t value -n '/lab-foundation/opsman_decryption_passphrase' -v 'REDACTED'
+credhub set -t value -n '/lab-foundation/harbor-container-registry/admin_password' -v 'REDACTED'
